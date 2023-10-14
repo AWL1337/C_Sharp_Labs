@@ -27,18 +27,9 @@ public class Route
 
     public BaseShip? OptimalShip()
     {
-        double min = double.MaxValue;
-        BaseShip? optimalShip = null;
         WillPass();
-        foreach (BaseShip currentShip in _ships)
-        {
-            if (!currentShip.IsPassed) continue;
 
-            if (min <= currentShip.FlightCost) continue;
-
-            optimalShip = currentShip;
-            min = currentShip.FlightCost;
-        }
+        BaseShip? optimalShip = _ships.Where(obj => obj.IsPassed).MinBy(ship => ship.FlightCost);
 
         return optimalShip;
     }
