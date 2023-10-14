@@ -21,14 +21,14 @@ public class NeutrinoNebula : BaseEnvironment
 
     public override bool Pass(BaseShip ship)
     {
-        CalculatePriceOfFlight(ship);
-
-        if (ship?.IsActiveEmitter() ?? false)
+        if (ship is not null)
         {
-            return true;
+            CalculatePriceOfFlight(ship);
+
+            return ship.IsActiveEmitter() || ship.Collision(Obstacle);
         }
 
-        return ship?.Collision(Obstacle) ?? false;
+        return false;
     }
 
     public override void CalculatePriceOfFlight(BaseShip ship)
