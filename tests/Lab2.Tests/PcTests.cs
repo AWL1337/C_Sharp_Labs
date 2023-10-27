@@ -14,7 +14,7 @@ public class PcTests
     [Fact]
     public void SuccessfulAssemblingTest()
     {
-        Computer computer = new MegaGigaPc().SetPc(new ComputerConfigurator()).Build();
+        Computer computer = new RogPc().SetConfigurator(new ComputerConfigurator()).Build();
         (Result Result, IEnumerable<string> Log) valid = new Validator().CheckPc(computer);
         Assert.True(valid.Result is Result.Success);
     }
@@ -23,8 +23,8 @@ public class PcTests
     public void OutOfWarrantyAssemblingTest()
     {
         var repo = new Repository();
-        var director = new MegaGigaPc();
-        ComputerConfigurator computerbuilder = director.SetPc(new ComputerConfigurator());
+        var director = new RogPc();
+        ComputerConfigurator computerbuilder = director.SetConfigurator(new ComputerConfigurator());
         computerbuilder.PowerPack = (PowerPack)repo.Get("PowerPacks").Where(obj => obj.Name == "AerocoolVx").First();
         (Result Result, IEnumerable<string> Log) valid = new Validator().CheckPc(computerbuilder.Build());
         Assert.True(valid.Result is Result.OutOfWarranty);
@@ -34,8 +34,8 @@ public class PcTests
     public void OutOfWarrantyCoolingSystemAssemblingTest()
     {
         var repo = new Repository();
-        var director = new MegaGigaPc();
-        ComputerConfigurator computerbuilder = director.SetPc(new ComputerConfigurator());
+        var director = new RogPc();
+        ComputerConfigurator computerbuilder = director.SetConfigurator(new ComputerConfigurator());
         computerbuilder.CoolingSystem = (CoolingSystem)repo.Get("CoolingSystem").Where(obj => obj.Name == "DeepCoolTheta").First();
         (Result Result, IEnumerable<string> Log) valid = new Validator().CheckPc(computerbuilder.Build());
         Assert.True(valid.Result is Result.OutOfWarranty);
@@ -45,8 +45,8 @@ public class PcTests
     public void FailAssemblingTest()
     {
         var repo = new Repository();
-        var director = new MegaGigaPc();
-        ComputerConfigurator computerbuilder = director.SetPc(new ComputerConfigurator());
+        var director = new RogPc();
+        ComputerConfigurator computerbuilder = director.SetConfigurator(new ComputerConfigurator());
         computerbuilder.Cpu = (Cpu)repo.Get("CPU").Where(obj => obj.Name == "AmdRyzen75700G").First();
         (Result Result, IEnumerable<string> Log) valid = new Validator().CheckPc(computerbuilder.Build());
         Assert.True(valid.Result is Result.Fail);

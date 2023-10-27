@@ -4,9 +4,9 @@ using Itmo.ObjectOrientedProgramming.Lab2.ComputerComponents.Factories;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Computers;
 
-public class MegaGigaPc : IPcPreset
+public class RogPc : IPcPreset
 {
-    public ComputerConfigurator SetPc(ComputerConfigurator configurator)
+    public ComputerConfigurator SetConfigurator(ComputerConfigurator configurator)
     {
         if (configurator is null)
         {
