@@ -12,9 +12,9 @@ using Itmo.ObjectOrientedProgramming.Lab2.Service.Exceptions;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Computers;
 
-public class ComputerConfigurator
+public class ComputerBuilder
 {
-    public ComputerConfigurator(Computer computer)
+    public ComputerBuilder(Computer computer)
     {
         MotherBoard = computer?.MotherBoard;
         Cpu = computer?.Cpu;
@@ -27,7 +27,7 @@ public class ComputerConfigurator
         WifiAdapter = computer?.WifiAdapter;
     }
 
-    public ComputerConfigurator()
+    public ComputerBuilder()
     {
     }
 

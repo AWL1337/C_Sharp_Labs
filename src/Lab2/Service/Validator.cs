@@ -5,13 +5,6 @@ using Itmo.ObjectOrientedProgramming.Lab2.Computers;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Service;
 
-public enum Result
-{
-    Success,
-    OutOfWarranty,
-    Fail,
-}
-
 public class Validator
 {
     private const string WarrantyCoolingWarning = "CoolingSystem hasn't enough power";

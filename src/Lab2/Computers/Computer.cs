@@ -48,8 +48,8 @@ public class Computer
         return consumption;
     }
 
-    public ComputerConfigurator Clone()
+    public ComputerBuilder Clone()
     {
-        return new ComputerConfigurator(this);
+        return new ComputerBuilder(this);
     }
 }

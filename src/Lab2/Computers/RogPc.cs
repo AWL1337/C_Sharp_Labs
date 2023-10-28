@@ -6,21 +6,21 @@ namespace Itmo.ObjectOrientedProgramming.Lab2.Computers;
 
 public class RogPc : IPcPreset
 {
-    public ComputerConfigurator SetConfigurator(ComputerConfigurator configurator)
+    public ComputerBuilder SetConfigurator(ComputerBuilder builder)
     {
-        if (configurator is null)
+        if (builder is null)
         {
-            return new ComputerConfigurator();
+            return new ComputerBuilder();
         }
 
-        configurator.Cpu = new AmdRyzen55600GFactory().CreateCpu();
-        configurator.Drives = new List<BaseDrive>() { new SeagateBarracudaSt2000Factory().CreateDrive() };
-        configurator.MotherBoard = new MsiA520MFactory().CreateMotherBoard();
-        configurator.Gpu = new Rtx4090Factory().CreateGpu();
-        configurator.CoolingSystem = new DeepCoolGammaFactory().CreateCoolingSystem();
-        configurator.Ram = new AmdRadeonR7Factory().CreateRam();
-        configurator.ComputerCase = new ZalmanI4Factory().CreateComputerCase();
-        configurator.PowerPack = new ThermaltakeGrandFactory().CreatePowerPack();
-        return configurator;
+        builder.Cpu = new AmdRyzen55600GFactory().CreateCpu();
+        builder.Drives = new List<BaseDrive>() { new SeagateBarracudaSt2000Factory().CreateDrive() };
+        builder.MotherBoard = new MsiA520MFactory().CreateMotherBoard();
+        builder.Gpu = new Rtx4090Factory().CreateGpu();
+        builder.CoolingSystem = new DeepCoolGammaFactory().CreateCoolingSystem();
+        builder.Ram = new AmdRadeonR7Factory().CreateRam();
+        builder.ComputerCase = new ZalmanI4Factory().CreateComputerCase();
+        builder.PowerPack = new ThermaltakeGrandFactory().CreatePowerPack();
+        return builder;
     }
 }
