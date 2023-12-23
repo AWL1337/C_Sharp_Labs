@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=lol
+      - POSTGRES_PASSWORD=kek
+      - POSTGRES_DB=ball
+    ports:
+      - "6432:5432"
+    restart: unless-stopped
