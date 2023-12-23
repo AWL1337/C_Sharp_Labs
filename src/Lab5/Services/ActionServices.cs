@@ -31,7 +31,7 @@ public class ActionServices
     {
         if (newValue < 0)
         {
-            throw new OperationException("Ты дебил?");
+            throw new OperationException("You cannot to take too much money");
         }
 
         IEnumerable<BankAccount> accs = _accountServices.FindBankAccountsByUserId(user, user.Id);
@@ -46,7 +46,7 @@ public class ActionServices
         {
             > 0 => new Transaction(newId, accountId, TransactionType.Replenishment, int.Abs(newValue - acc.Money)),
             < 0 => new Transaction(newId, accountId, TransactionType.Withdraw, int.Abs(newValue - acc.Money)),
-            _ => throw new OperationException("Миша все *****, давай по новой"),
+            _ => throw new OperationException("Useless operation"),
         };
         _accountServices.UpdateBankAccount(accountId, newValue);
         _historyRepo.AddTransaction(transaction);
